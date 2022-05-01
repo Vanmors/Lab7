@@ -3,10 +3,8 @@ package com.company.Commands;
 import com.company.data.Flat;
 
 import java.io.Serializable;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 import java.util.Stack;
 
 public class RemoveByIdCommand implements ICommand, Serializable {

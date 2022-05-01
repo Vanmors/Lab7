@@ -74,9 +74,9 @@ public class CommandChecker {
                     else if(command.equals("save")){
                         SaveCommand.save(f, st);
                     }
-                    else if(command.equals("remove_all_by_house")){
-                        RemoveAllByHouseCommand.removeAllByHouse(st);
-                    }
+//                    else if(command.equals("remove_all_by_house")){
+//                        RemoveAllByHouseCommand.removeAllByHouse(st);
+//                    }
 //                    else if(n[0].equals("update_id")){
 //                        try {
 //                            UpdateIdCommand.updateID(st, n);
@@ -85,17 +85,17 @@ public class CommandChecker {
 //                            System.out.println("Команда введена неверно");
 //                        }
 //                    }
-                    else if(n[0].equals("remove_lower")){
-                    try {
-                        com.company.Commands.RemoveLowerCommand.removeLower(st, n);
-                    }
-                    catch (ArrayIndexOutOfBoundsException e){
-                        System.out.println("Команда введена неверно");
-                    }
-                    }
-                    else if (command.equals("add_if_min")){
-                        AddIfMinCommand.addIfMin(st);
-                    }
+//                    else if(n[0].equals("remove_lower")){
+//                    try {
+//                        com.company.Commands.RemoveLowerCommand.removeLower(st, n);
+//                    }
+//                    catch (ArrayIndexOutOfBoundsException e){
+//                        System.out.println("Команда введена неверно");
+//                    }
+//                    }
+//                    else if (command.equals("add_if_min")){
+//                        AddIfMinCommand.addIfMin(st);
+//                    }
                     else{
                         throw new UnknownCommandException(command);
                     }

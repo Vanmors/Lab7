@@ -1,15 +1,9 @@
 package com.company.Commands;
 
-import com.company.data.Coordinates;
 import com.company.data.Flat;
-import com.company.data.House;
-import com.company.data.View;
 
 import java.io.Serializable;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 import java.util.Stack;
 
 public class UpdateIdCommand implements ICommand, Serializable {
