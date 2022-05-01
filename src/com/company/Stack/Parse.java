@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Stack;
 import java.time.ZonedDateTime;
 
-public class Parse {
+public class Parse implements Parsiable {
     String FileName;
 
     /**

@@ -41,8 +41,4 @@ public class ReorderCommand implements Serializable, ICommand {
         return "Compleat";
     }
 
-    @Override
-    public String execute(Stack<Flat> st, Flat f) {
-        return null;
-    }
 }

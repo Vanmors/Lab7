@@ -29,8 +29,4 @@ public class AverageOfNumberOfRooms implements Serializable, ICommand{
         return String.valueOf(result);
     }
 
-    @Override
-    public String execute(Stack<Flat> st, Flat f) {
-        return null;
-    }
 }

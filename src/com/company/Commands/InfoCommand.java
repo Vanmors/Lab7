@@ -26,8 +26,4 @@ public class InfoCommand implements Serializable, ICommand {
                 "\nnumber of elements: "+ count;
     }
 
-    @Override
-    public String execute(Stack<Flat> st, Flat f) {
-        return null;
-    }
 }

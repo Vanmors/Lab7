@@ -13,17 +13,21 @@ import java.util.Stack;
 
 public class AddCommand implements Serializable, ICommand {
     private static final long serialVersionUID = 1L;
+    private Flat f;
+
     /**
      * добавляет элемент в коллекцию
+     *
      * @param st объект коллекции Stack
      */
-    public String execute(Stack<Flat> st, Flat f){
-        st.push(f);
-        return "Объект добавлен в коллекцию";
+
+    public AddCommand(Flat f) {
+        this.f = f;
     }
 
-    @Override
     public String execute(Stack<Flat> st) {
-        return "true";
+        st.push(f);
+        return "Object insert in collection";
     }
+
 }

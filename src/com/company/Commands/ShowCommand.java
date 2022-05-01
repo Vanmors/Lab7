@@ -27,9 +27,5 @@ public class ShowCommand implements Serializable, ICommand {
         }
     }
 
-    @Override
-    public String execute(Stack<Flat> st, Flat f) {
-        return null;
-    }
 }
 

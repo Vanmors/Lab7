@@ -31,9 +31,9 @@ public class Main {
                     !args[0].equals("/dev/random") &&
                     !args[0].equals("/dev/zero")) {
 
-                Parse p = new Parse();
+//                Parse p = new Parse();
                 Stack<Flat> st = new Stack<>();
-                p.parse(args[0], st);
+//                p.parse(args[0], st);
                 ServerAccepter.ServerConnect(args[0], st);
                 break;
             } else {

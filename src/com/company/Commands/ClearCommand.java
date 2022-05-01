@@ -19,8 +19,4 @@ public class ClearCommand implements Serializable, ICommand{
         return "Compleat";
     }
 
-    @Override
-    public String execute(Stack<Flat> st, Flat f) {
-        return null;
-    }
 }

@@ -32,8 +32,4 @@ public class HelpCommand implements Serializable, ICommand {
     return s;
     }
 
-    @Override
-    public String execute(Stack<Flat> st, Flat f) {
-        return null;
-    }
 }

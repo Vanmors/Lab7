@@ -26,8 +26,4 @@ public class MaxByFurnitureCommand implements Serializable, ICommand {
         return maxByFurniture;
     }
 
-    @Override
-    public String execute(Stack<Flat> st, Flat f) {
-        return null;
-    }
 }

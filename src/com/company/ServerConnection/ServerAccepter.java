@@ -21,14 +21,13 @@ public class ServerAccepter {
     private static SocketChannel sockch;
     private static BufferedReader in; // поток чтения из сокета
     private static BufferedWriter out; // поток записи в сокет
-
     public static void ServerConnect(String f, Stack<Flat> st) throws IOException, ClassNotFoundException {
         String s = "";
         Selector selector = Selector.open();
         ServerSocketChannel ssChannel1 = ServerSocketChannel.open();
         ssChannel1.configureBlocking(false);
-        ssChannel1.socket().bind(new InetSocketAddress(3245));
-
+        ssChannel1.socket().bind(new InetSocketAddress(4009));
+        HandlerRequest handlerRequest = handlerRequest = new HandlerRequest();
         // Register both channels with selector
         ssChannel1.register(selector, SelectionKey.OP_ACCEPT);
 
@@ -62,7 +61,7 @@ public class ServerAccepter {
                     bufferRaed.flip();
 
                     ByteBuffer bufferWrite = ByteBuffer.allocate(300000);
-                    bufferWrite = HandlerRequest.handelr(st, bufferRaed);
+                    bufferWrite = handlerRequest.handelr(st, bufferRaed, f);
                     sChannel.write(bufferWrite);
 
 //                    sChannel.close();

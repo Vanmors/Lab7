@@ -7,5 +7,5 @@ import java.util.Stack;
 public interface ICommand {
 
     public String execute(Stack<Flat> st);
-    public String execute(Stack<Flat> st, Flat f);
+
 }
