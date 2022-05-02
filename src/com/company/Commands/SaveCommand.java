@@ -6,28 +6,28 @@ import com.opencsv.CSVWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class SaveCommand {
+public class SaveCommand implements ICommand, Serializable {
+    private static final long serialVersionUID = 4L;
     /**
      * сохранить коллекцию в файл
      * @param f файл в который сохраняется коллекция
      * @param st объект коллекции Stack
      * @throws IOException
      */
-    static public void save(String f, Stack<Flat> st) throws IOException {
-        try {
-            List<String[]> list = creatCsvData(st);
-            try (CSVWriter writer = new CSVWriter(new PrintWriter(f))) {
-                writer.writeAll(list);
-                System.out.println("Коллекция сохранена");
-            }
+    static public String save(String file, Stack<Flat> st) {
+        List<String[]> list = creatCsvData(st);
+        try (CSVWriter writer = new CSVWriter(new PrintWriter(file))) {
+            writer.writeAll(list);
+            System.out.println("Collection saved");
+        } catch (IOException e) {
+            return "File not found";
         }
-        catch (FileNotFoundException e){
-            System.out.println("Нет прав на файл");
-        }
+        return "Complete";
     }
 
     /**
@@ -42,6 +42,11 @@ public class SaveCommand {
             list.add(flat.toStringForSave());
         }
         return list;
+    }
+
+    @Override
+    public String execute(Stack<Flat> st) {
+        return null;
     }
 }
 

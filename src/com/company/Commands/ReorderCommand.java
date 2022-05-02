@@ -38,7 +38,7 @@ public class ReorderCommand implements Serializable, ICommand {
             st.push(f);
             list.remove(i);
         }
-        return "Compleat";
+        return "Complete";
     }
 
 }

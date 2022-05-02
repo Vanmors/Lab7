@@ -32,13 +32,13 @@ public class RemoveAllByHouseCommand implements ICommand, Serializable {
                                 && flat.getHouse().getYear().equals(h.getYear())
                                 && flat.getHouse().getNumberOfFlatsOnFloor().equals(h.getNumberOfFlatsOnFloor())) {
                             st.remove(st.get(flat.getId()-1));
-                            System.out.println("Элемент удалён");
+                            System.out.println("Item removed");
                         }
                     }
                     break;
                 }
                 catch (InputMismatchException e){
-                    System.out.println("Некорректно введены данные");
+                    System.out.println("Data entered incorrectly");
                 }
             }
         }

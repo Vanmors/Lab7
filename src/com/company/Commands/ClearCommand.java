@@ -16,7 +16,7 @@ public class ClearCommand implements Serializable, ICommand{
         while(!st.empty()){
             st.pop();
         }
-        return "Compleat";
+        return "Complete";
     }
 
 }

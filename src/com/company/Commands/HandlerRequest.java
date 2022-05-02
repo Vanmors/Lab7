@@ -9,12 +9,15 @@ import java.io.ObjectInputStream;
 import java.io.StreamCorruptedException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 import java.util.Stack;
 
 public class HandlerRequest {
     private int count = 0;
+    private String command;
     public ByteBuffer handelr(Stack<Flat> st, ByteBuffer bufferRead, String f) throws IOException, ClassNotFoundException {
         try {
+            SaveCommand saveCommand = new SaveCommand();
             ICommand reques = (ICommand) new ObjectInputStream(new ByteArrayInputStream(bufferRead.array())).readObject();
             System.out.println(reques);
 
@@ -23,8 +26,12 @@ public class HandlerRequest {
                 pc.parse(f, st);
                 count = 1;
             }
-
-            String command = reques.execute(st);
+            if (reques.getClass().equals(saveCommand.getClass())){
+                command = SaveCommand.save(f,st);
+            }
+            else {
+                command = reques.execute(st);
+            }
             byte[] bs = command.getBytes(StandardCharsets.UTF_8);
             ByteBuffer bufferWriter = ByteBuffer.wrap(bs);
             return bufferWriter;

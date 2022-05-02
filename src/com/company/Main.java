@@ -2,7 +2,6 @@ package com.company;
 
 import com.company.Commands.CommandChecker;
 import com.company.ServerConnection.ServerAccepter;
-import com.company.Stack.Parse;
 import com.company.data.Flat;
 
 import java.io.*;
@@ -31,9 +30,7 @@ public class Main {
                     !args[0].equals("/dev/random") &&
                     !args[0].equals("/dev/zero")) {
 
-//                Parse p = new Parse();
                 Stack<Flat> st = new Stack<>();
-//                p.parse(args[0], st);
                 ServerAccepter.ServerConnect(args[0], st);
                 break;
             } else {

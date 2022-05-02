@@ -27,7 +27,7 @@ public class ServerAccepter {
         ServerSocketChannel ssChannel1 = ServerSocketChannel.open();
         ssChannel1.configureBlocking(false);
         ssChannel1.socket().bind(new InetSocketAddress(4009));
-        HandlerRequest handlerRequest = handlerRequest = new HandlerRequest();
+        HandlerRequest handlerRequest = new HandlerRequest();
         // Register both channels with selector
         ssChannel1.register(selector, SelectionKey.OP_ACCEPT);
 

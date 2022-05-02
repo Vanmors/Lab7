@@ -71,9 +71,9 @@ public class CommandChecker {
 //                    else if(command.equals("info")){
 //                        InfoCommand.info(st);
                     }
-                    else if(command.equals("save")){
-                        SaveCommand.save(f, st);
-                    }
+//                    else if(command.equals("save")){
+//                        SaveCommand.save(f, st);
+//                    }
 //                    else if(command.equals("remove_all_by_house")){
 //                        RemoveAllByHouseCommand.removeAllByHouse(st);
 //                    }
