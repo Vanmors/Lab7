@@ -5,6 +5,7 @@ import com.company.data.Flat;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class ShowCommand implements Serializable, ICommand {
     /**
@@ -16,10 +17,10 @@ public class ShowCommand implements Serializable, ICommand {
     public String execute(Stack<Flat> st) {
         if (!st.empty()){
             ArrayList<Flat> copyOfCollection = new ArrayList<>(st);
-            String collectionShow = "";
-            for(Flat flat:copyOfCollection) {
-                collectionShow = collectionShow + flat.toString() + "\n============";
-            }
+            String collectionShow = copyOfCollection
+                    .stream()
+                    .map(flat -> flat.toString() + "\n============\n")
+                    .collect(Collectors.joining());
             return collectionShow;
         }
         else{

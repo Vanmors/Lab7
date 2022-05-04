@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.Commands.CommandChecker;
 import com.company.ServerConnection.ServerAccepter;
 import com.company.data.Flat;
 
@@ -21,7 +20,6 @@ public class Main {
         /**
          * создание экземпляр класса CommandChecker
          */
-        CommandChecker com = new CommandChecker();
         ByteArrayOutputStream byteArrayOutputStream;
 
         while(true) {

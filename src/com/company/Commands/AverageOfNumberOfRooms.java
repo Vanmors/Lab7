@@ -19,13 +19,14 @@ public class AverageOfNumberOfRooms implements Serializable, ICommand{
         if (!st.empty()) {
             count = 0;
             ArrayList<Flat> copyOfCollection = new ArrayList<>(st);
-            for (Flat flat : copyOfCollection) {
-                count += 1;
-                average += flat.getNumberOfRooms();
-            }
+            average = copyOfCollection.stream().mapToLong((flat) -> flat.getNumberOfRooms()).average().getAsDouble();
+//            for (Flat flat : copyOfCollection) {
+//                count += 1;
+//                average += flat.getNumberOfRooms();
+//            }
 
         }
-        double result = average / count;
+        double result = average;
         return String.valueOf(result);
     }
 

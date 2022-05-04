@@ -19,7 +19,8 @@ public class AddCommand implements Serializable, ICommand {
         this.f = f;
     }
 
-    public String execute(Stack<Flat> st) {
+    public String execute(Stack<Flat> st)
+    {   f.setID(st.peek().getId()+1);
         st.push(f);
         return "Object insert in collection";
     }

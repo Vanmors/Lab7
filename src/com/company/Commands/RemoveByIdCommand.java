@@ -24,10 +24,7 @@ public class RemoveByIdCommand implements ICommand, Serializable {
     @Override
     public String execute(Stack<Flat> st) throws ArrayIndexOutOfBoundsException {
         ArrayList<Flat> list = new ArrayList(st);
-        long count = 0;
-        for (Flat flat : list) {
-            count += 1;
-        }
+        long count = list.size();
             try {
                 if (id > 0 || id < count) {
                     st.remove(st.get(id - 1));

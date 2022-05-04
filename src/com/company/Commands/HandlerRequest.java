@@ -9,7 +9,6 @@ import java.io.ObjectInputStream;
 import java.io.StreamCorruptedException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
 import java.util.Stack;
 
 public class HandlerRequest {
@@ -28,6 +27,7 @@ public class HandlerRequest {
             }
             if (reques.getClass().equals(saveCommand.getClass())){
                 command = SaveCommand.save(f,st);
+                count = 1;
             }
             else {
                 command = reques.execute(st);

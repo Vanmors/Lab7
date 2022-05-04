@@ -12,9 +12,11 @@ import java.util.Stack;
 public class ReorderCommand implements Serializable, ICommand {
     /**
      * сортирует коллекцию в порядке, обратном нынешнему
+     *
      * @param st объект коллекции Stack
      */
     private static final long serialVersionUID = 1L;
+
     @Override
     public String execute(Stack<Flat> st) {
         ArrayList<Flat> list = new ArrayList<>(st);
@@ -22,8 +24,8 @@ public class ReorderCommand implements Serializable, ICommand {
         clear.execute(st);
         int i;
         int id = 0;
-        while(!list.isEmpty()){
-            i = list.size()-1;
+        while (!list.isEmpty()) {
+            i = list.size() - 1;
             id++;
             String name = list.get(i).getName();
             Coordinates coordinates = list.get(i).getCoordinates();

@@ -24,6 +24,7 @@ public class UpdateIdCommand implements ICommand, Serializable {
     @Override
     public String execute(Stack<Flat> st) {
         String result = "Element changed";
+        f.setID(id);
         try {
             ArrayList<Flat> list = new ArrayList<>(st);
             list.set(id - 1, f);

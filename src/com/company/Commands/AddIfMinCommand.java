@@ -29,6 +29,7 @@ public class AddIfMinCommand implements ICommand, Serializable {
             }
         }
         if (f.getNumberOfRooms()<minNumberOfRooms){
+            f.setID(st.peek().getId()+1);
             st.push(f);
         }
         return "Complete";

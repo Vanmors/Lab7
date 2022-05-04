@@ -13,22 +13,21 @@ public class HelpCommand implements Serializable, ICommand {
      */
     @Override
     public String execute(Stack<Flat> st)  {
-            String s ="help : вывести справку по доступным командам\n" +
-                    "info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)\n" +
-                    "show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" +
-                    "add {element} : добавить новый элемент в коллекцию\n" +
-                    "update id {element} : обновить значение элемента коллекции, id которого равен заданному\n" +
-                    "remove_by_id id : удалить элемент из коллекции по его id\n" +
-                    "clear : очистить коллекцию\n" +
-                    "save : сохранить коллекцию в файл\n" +
-                    "execute_script file_name : считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.\n" +
-                    "exit : завершить программу (без сохранения в файл)\n" +
-                    "add_if_min {element} : добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции\n" +
-                    "remove_lower {element} : удалить из коллекции все элементы, меньшие, чем заданный\n" +
-                    "reorder : отсортировать коллекцию в порядке, обратном нынешнему\n" +
-                    "remove_all_by_house house : удалить из коллекции все элементы, значение поля house которого эквивалентно заданному\n" +
-                    "average_of_number_of_rooms : вывести среднее значение поля numberOfRooms для всех элементов коллекции\n" +
-                    "max_by_furniture : вывести любой объект из коллекции, значение поля furniture которого является максимальным";
+            String s ="help : output help for available commands\n" +
+                    "info : output information about the collection (type, initialization date, number of items, etc.) to the standard output stream\n" +
+                    "show : output to the standard output stream all the elements of the collection in a string representation\n" +
+                    "add {element} : add a new item to the collection\n" +
+                    "update id {element} : update the value of a collection item whose id is equal to the specified one\n" +
+                    "remove_by_id id : delete an item from the collection by its id\n" +
+                    "save : save the collection to a file\n" +
+                    "execute_script file_name : read and execute the script from the specified file. The script contains commands in the same form in which they are entered by the user in interactive mode\n" +
+                    "exit : end the program (with saving to a file)\n" +
+                    "add_if_min {element} : add a new item to the collection if its value is less than that of the smallest item in this collection\n" +
+                    "remove_lower {element} : remove all items smaller than the specified one from the collection\n" +
+                    "reorder : sort the collection in the reverse order of the current one\n" +
+                    "remove_all_by_house house : remove from the collection all items whose house field value is equivalent to the specified\n" +
+                    "average_of_number_of_rooms : output the average value of the numberOfRooms field for all elements of the collection\n" +
+                    "max_by_furniture : output any object from the collection whose furniture field value is the maximum";
     return s;
     }
 

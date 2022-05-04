@@ -16,12 +16,13 @@ public class MaxByFurnitureCommand implements Serializable, ICommand {
         String maxByFurniture = "";
         if (!st.empty()) {
             ArrayList<Flat> copyOfCollection = new ArrayList<>(st);
-            for (Flat flat : copyOfCollection) {
-                if (flat.getFurniture()) {
-                    maxByFurniture = maxByFurniture + flat.toString();
-                    break;
-                }
-            }
+            maxByFurniture = copyOfCollection.stream().filter(flat -> flat.getFurniture()).findFirst().toString();
+//            for (Flat flat : copyOfCollection) {
+//                if (flat.getFurniture()) {
+//                    maxByFurniture = maxByFurniture + flat;
+//                    break;
+//                }
+//            }
         }
         return maxByFurniture;
     }
