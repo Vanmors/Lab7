@@ -17,20 +17,20 @@ public class HandlerRequest {
     public ByteBuffer handelr(Stack<Flat> st, ByteBuffer bufferRead, String f) throws IOException, ClassNotFoundException {
         try {
             SaveCommand saveCommand = new SaveCommand();
-            ICommand reques = (ICommand) new ObjectInputStream(new ByteArrayInputStream(bufferRead.array())).readObject();
-            System.out.println(reques);
+            ICommand request = (ICommand) new ObjectInputStream(new ByteArrayInputStream(bufferRead.array())).readObject();
+            System.out.println(request);
 
-            if (reques != null && count == 0) {
-                ProxyParse pc = new ProxyParse(f, st, reques);
+            if (request != null && count == 0) {
+                ProxyParse pc = new ProxyParse(f, st, request);
                 pc.parse(f, st);
                 count = 1;
             }
-            if (reques.getClass().equals(saveCommand.getClass())){
+
+            if (request.getClass().equals(saveCommand.getClass())){
                 command = SaveCommand.save(f,st);
-                count = 1;
             }
             else {
-                command = reques.execute(st);
+                command = request.execute(st);
             }
             byte[] bs = command.getBytes(StandardCharsets.UTF_8);
             ByteBuffer bufferWriter = ByteBuffer.wrap(bs);

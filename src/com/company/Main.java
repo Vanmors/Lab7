@@ -12,15 +12,11 @@ import java.util.Stack;
  */
 public class Main {
     /**
-     * метод, создающий экземпляр класса CommandChecker и вызывающий метод exit, запускающий работу программы
+     * метод, создающий экземпляр класса CommandChecker и вызывающий метод ServerConnect, запускающий работу программы
      * @param args аргумент командной строки
      * @throws IOException исключение
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        /**
-         * создание экземпляр класса CommandChecker
-         */
-        ByteArrayOutputStream byteArrayOutputStream;
 
         while(true) {
             if (args.length == 1 &&
