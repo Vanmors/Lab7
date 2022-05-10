@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.Database.CollectionDB;
 import com.company.ServerConnection.ServerAccepter;
 import com.company.data.Flat;
 
@@ -21,6 +22,8 @@ public class Main {
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Map<String, String> passwordMap = new HashMap<>();
+        CollectionDB collectionDatabase = new CollectionDB();
+        collectionDatabase.getConnection();
         while(true) {
             if (args.length == 1 &&
                     !args[0].equals("/dev/null") &&
