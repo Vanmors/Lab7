@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class CollectionDB {
-    public void insertIntoTable(Flat flat){
+    public void insertIntoTable(){
         Connection connection = null;
         Statement statement = null;
         CollectionDB connectionDB = new CollectionDB();
@@ -15,10 +15,10 @@ public class CollectionDB {
         connection = connectionDB.getConnection();
 
         try {
-            String table = "INSERT INTO collaction(Name, Coordinates, Creation Time, " +
+            String table = "INSERT INTO collection(Name, CoordinateX, CoordinateY, CreationTime, " +
                     "Area, NumberOfRooms, Furniture, " +
-                    "TimeToMetroOnFoot, View, Name, " +
-                    "Year, NumberOfFlatsOnFloor) VALUES()";
+                    "TimeToMetroOnFoot, View, NameH, " +
+                    "Year, NumberOfFlatsOnFloor) VALUES('Ivan',3,5,'2022-05-11',35,6,'true',50,'STREET','Ivan',18,810)";
             statement = connection.createStatement();
             statement.executeUpdate(table);
             System.out.println("Value inserted successfully");
@@ -28,7 +28,6 @@ public class CollectionDB {
         }
     }
 
-}
     public void createTable(){
         Connection connection = null;
         Statement statement = null;
@@ -37,16 +36,18 @@ public class CollectionDB {
         connection = connectionDB.getConnection();
 
         try {
-            String table = "CREATE TABLE collection(id SERIAL PRIMARY KEY, " +
+            String table = "CREATE TYPE VIEW AS ENUM ('BAD', 'TERRIBLE', 'PARK', 'STREET');" +
+                    "CREATE TABLE collection(id SERIAL PRIMARY KEY, " +
                     "Name VARCHAR(200), " +
-                    "Coordinates VARCHAR(200), " +
-                    "Creation Time VARCHAR(200), " +
+                    "CoordinateX INTEGER," +
+                    "CoordinateY INTEGER," +
+                    "CreationTime DATE, " +
                     "Area VARCHAR(200), " +
                     "NumberOfRooms INTEGER, " +
-                    "Furniture VARCHAR(200)," +
+                    "Furniture BOOLEAN," +
                     "TimeToMetroOnFoot INTEGER," +
                     "View VARCHAR(200)," +
-                    "Name VARCHAR(200)," +
+                    "NameH VARCHAR(200)," +
                     "Year INTEGER," +
                     "NumberOfFlatsOnFloor INTEGER)";
             statement = connection.createStatement();
