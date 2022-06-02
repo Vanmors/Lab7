@@ -1,19 +1,17 @@
 package com.company.ServerConnection;
 
 import com.company.Commands.HandlerRequest;
-import com.company.Commands.PasswordCheck;
+import com.company.Commands.PasswordCheckDB;
 import com.company.data.Flat;
 
 import java.io.*;
 import java.net.InetSocketAddress;
-import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Stack;
@@ -50,7 +48,7 @@ public class ServerAccepter {
                     System.out.println(bufferRaed);
                     bufferRaed.flip();
 
-                    PasswordCheck passwordCheck = new PasswordCheck(bufferRaed, passwordMap);
+                    PasswordCheckDB passwordCheck = new PasswordCheckDB(bufferRaed, passwordMap);
                     if (passwordCheck.passwordCheck()) {
                         ByteBuffer bufferWrite;
                         String OK = "Entered";

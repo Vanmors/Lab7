@@ -29,7 +29,9 @@ public class Main {
 //        collectionDB.createTable();
 //        collectionDB.insertIntoTable();
         ParseDB parseDB = new ParseDB();
+        collectionDB.insertIntoTable();
         parseDB.parse();
+
         while(true) {
             if (args.length == 1 &&
                     !args[0].equals("/dev/null") &&

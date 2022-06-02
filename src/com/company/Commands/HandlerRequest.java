@@ -17,7 +17,7 @@ public class HandlerRequest {
     private String command;
     public ByteBuffer handelr(Stack<Flat> st, ByteBuffer bufferRead, String f) throws IOException, ClassNotFoundException {
         try {
-            SaveCommand saveCommand = new SaveCommand();
+
             ICommand request = (ICommand) new ObjectInputStream(new ByteArrayInputStream(bufferRead.array())).readObject();
             System.out.println(request);
 
@@ -27,12 +27,8 @@ public class HandlerRequest {
                 count = 1;
             }
 
-            if (request.getClass().equals(saveCommand.getClass())){
-                command = SaveCommand.save(f,st);
-            }
-            else {
-                command = request.execute(st);
-            }
+            command = request.execute(st);
+
             byte[] bs = command.getBytes(StandardCharsets.UTF_8);
             ByteBuffer bufferWriter = ByteBuffer.wrap(bs);
             return bufferWriter;
