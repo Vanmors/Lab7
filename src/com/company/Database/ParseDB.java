@@ -14,11 +14,10 @@ import java.util.stream.Collectors;
 
 public class ParseDB {
 
-    public void parse() throws SQLException {
+    public void parse(Stack<Flat> stack) throws SQLException {
         Connection connection = null;
         Statement statement = null;
         ResultSet rs = null;
-        Stack<Flat> stack = new Stack<>();
         CollectionDB connectionDB = new CollectionDB();
 
         connection = connectionDB.getConnection();
@@ -40,7 +39,8 @@ public class ParseDB {
                         rs.getBoolean(8),
                         rs.getLong(9),
                         View.valueOf((String) rs.getObject(10)),
-                        house);
+                        house,
+                        rs.getString(14));
                 //flat.toString();
                 stack.push(flat);
                 }

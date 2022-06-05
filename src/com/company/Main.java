@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.Database.CollectionDB;
 import com.company.Database.ParseDB;
+import com.company.Database.ServerDB;
 import com.company.ServerConnection.ServerAccepter;
 import com.company.data.Flat;
 
@@ -24,13 +25,12 @@ public class Main {
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
         Map<String, String> passwordMap = new HashMap<>();
-        CollectionDB collectionDB = new CollectionDB();
-//        collectionDB.getConnection();
-//        collectionDB.createTable();
-//        collectionDB.insertIntoTable();
+        ServerDB serverDB = new ServerDB();
         ParseDB parseDB = new ParseDB();
-        collectionDB.insertIntoTable();
-        parseDB.parse();
+
+        //serverDB.createTableServer();
+        //serverDB.insertIntoTableServer();
+        //parseDB.parse();
 
         while(true) {
             if (args.length == 1 &&

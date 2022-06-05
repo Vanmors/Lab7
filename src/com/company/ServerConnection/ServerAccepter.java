@@ -49,7 +49,7 @@ public class ServerAccepter {
                     bufferRaed.flip();
 
                     PasswordCheckDB passwordCheck = new PasswordCheckDB(bufferRaed, passwordMap);
-                    if (passwordCheck.passwordCheck()) {
+                    if (passwordCheck.passwordCheck().equals("Entered")) {
                         ByteBuffer bufferWrite;
                         String OK = "Entered";
                         byte[] bs = OK.getBytes(StandardCharsets.UTF_8);

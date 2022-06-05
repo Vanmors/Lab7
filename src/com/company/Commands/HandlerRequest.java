@@ -22,8 +22,8 @@ public class HandlerRequest {
             System.out.println(request);
 
             if (request != null && count == 0) {
-                ProxyParse pc = new ProxyParse(f, st, request);
-                pc.parse(f, st);
+                ProxyParse pc = new ProxyParse(st, request);
+                pc.parse(st);
                 count = 1;
             }
 

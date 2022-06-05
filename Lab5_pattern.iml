@@ -19,7 +19,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../CommandsProject/out/artifacts/CommandsProject_jar/CommandsProject.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/postgresql-42.3.5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -28,7 +28,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/postgresql-42.3.5.jar!/" />
+          <root url="jar://$MODULE_DIR$/../CommandsProject/out/artifacts/CommandsProject_jar/CommandsProject.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

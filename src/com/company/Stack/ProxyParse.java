@@ -1,10 +1,12 @@
 package com.company.Stack;
 
 import com.company.Commands.ICommand;
+import com.company.Database.ParseDB;
 import com.company.data.Flat;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.sql.SQLException;
 import java.util.Stack;
 
 public class ProxyParse implements Parsiable{
@@ -12,17 +14,20 @@ public class ProxyParse implements Parsiable{
     private Stack<Flat> stack;
     private ICommand iCommand;
 
-    public ProxyParse(String FileName, Stack<Flat> stack, ICommand iCommand){
-        this.FileName = FileName;
+    public ProxyParse(Stack<Flat> stack, ICommand iCommand){
         this.stack = stack;
         this.iCommand = iCommand;
 
     }
     @Override
-    public void parse(String FileName, Stack<Flat> stack) throws IOException {
+    public void parse(Stack<Flat> stack) throws IOException {
         if(iCommand != null){
-            Parse p = new Parse();
-            p.parse(FileName, stack);
+            ParseDB p = new ParseDB();
+            try {
+                p.parse(stack);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
