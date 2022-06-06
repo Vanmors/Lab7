@@ -12,13 +12,15 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Stack;
 
 public class ServerAccepter {
 
-    public static void ServerConnect(String f, Stack<Flat> st, Map<String, String> passwordMap) throws IOException, ClassNotFoundException {
+    public static void ServerConnect(String f, Stack<Flat> st, Map<String, String> passwordMap) throws ClassNotFoundException, SQLException, IOException, NoSuchAlgorithmException {
         Selector selector = Selector.open();
         ServerSocketChannel ssChannel1 = ServerSocketChannel.open();
         ssChannel1.configureBlocking(false);
@@ -29,40 +31,42 @@ public class ServerAccepter {
 
 
         while (true) {
-            selector.select();
+            try {
+                selector.select();
 
-            Iterator it = selector.selectedKeys().iterator();
+                Iterator it = selector.selectedKeys().iterator();
 
-            while (it.hasNext()) {
-                SelectionKey selKey = (SelectionKey) it.next();
+                while (it.hasNext()) {
+                    SelectionKey selKey = (SelectionKey) it.next();
 
 //            it.remove();
+                    if (selKey.isAcceptable()) {
+                        ServerSocketChannel ssChannel = (ServerSocketChannel) selKey.channel();
+                        SocketChannel sChannel = ssChannel.accept();
 
-                if (selKey.isAcceptable()) {
-                    ServerSocketChannel ssChannel = (ServerSocketChannel) selKey.channel();
-                    SocketChannel sChannel = ssChannel.accept();
 
+                        ByteBuffer bufferRaed = ByteBuffer.allocate(30000);
+                        sChannel.read(bufferRaed);
+                        System.out.println(bufferRaed);
+                        bufferRaed.flip();
 
-                    ByteBuffer bufferRaed = ByteBuffer.allocate(30000);
-                    sChannel.read(bufferRaed);
-                    System.out.println(bufferRaed);
-                    bufferRaed.flip();
-
-                    PasswordCheckDB passwordCheck = new PasswordCheckDB(bufferRaed, passwordMap);
-                    if (passwordCheck.passwordCheck().equals("Entered")) {
-                        ByteBuffer bufferWrite;
-                        String OK = "Entered";
-                        byte[] bs = OK.getBytes(StandardCharsets.UTF_8);
-                        bufferWrite = ByteBuffer.wrap(bs);
-                        sChannel.write(bufferWrite);
-                    }
-                    else {
-                        ByteBuffer bufferWrite;
-                        bufferWrite = handlerRequest.handelr(st, bufferRaed, f);
-                        sChannel.write(bufferWrite);
-                    }
+                        PasswordCheckDB passwordCheck = new PasswordCheckDB(bufferRaed, passwordMap);
+                        String result = passwordCheck.passwordCheck();
+                        if (result.equals("Entered") || result.equals("Incorrect password")) {
+                            ByteBuffer bufferWrite;
+                            //String OK = "Entered";
+                            byte[] bs = result.getBytes(StandardCharsets.UTF_8);
+                            bufferWrite = ByteBuffer.wrap(bs);
+                            sChannel.write(bufferWrite);
+                        } else if (result.equals("wasEntered")) {
+                            ByteBuffer bufferWrite;
+                            bufferWrite = handlerRequest.handelr(st, bufferRaed, f);
+                            sChannel.write(bufferWrite);
+                        }
 //                    sChannel.close();
+                    }
                 }
+            } catch (IOException e) {
 
             }
         }

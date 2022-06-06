@@ -7,6 +7,7 @@ import com.company.ServerConnection.ServerAccepter;
 import com.company.data.Flat;
 
 import java.io.*;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class Main {
      * @param args аргумент командной строки
      * @throws IOException исключение
      */
-    public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException, NoSuchAlgorithmException {
         Map<String, String> passwordMap = new HashMap<>();
         ServerDB serverDB = new ServerDB();
         ParseDB parseDB = new ParseDB();

@@ -41,14 +41,9 @@ public class ParseDB {
                         View.valueOf((String) rs.getObject(10)),
                         house,
                         rs.getString(14));
-                //flat.toString();
-                stack.push(flat);
+
                 }
 
-            System.out.println(stack
-                    .stream()
-                    .map(Flat::toString)
-                    .collect(Collectors.joining("\n============\n")));
         } catch (Exception e) {
             e.printStackTrace();
         }
