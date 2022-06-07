@@ -21,11 +21,11 @@ public class HandlerRequest {
             ICommand request = (ICommand) new ObjectInputStream(new ByteArrayInputStream(bufferRead.array())).readObject();
             System.out.println(request);
 
-            if (request != null && count == 0) {
-                ProxyParse pc = new ProxyParse(st, request);
-                pc.parse(st);
-                count = 1;
-            }
+//            if (request != null && count == 0) {
+//                ProxyParse pc = new ProxyParse(st, request);
+//                pc.parse(st);
+//                count = 1;
+//            }
 
             command = request.execute(st);
 

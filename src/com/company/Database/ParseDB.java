@@ -41,7 +41,7 @@ public class ParseDB {
                         View.valueOf((String) rs.getObject(10)),
                         house,
                         rs.getString(14));
-
+                stack.push(flat);
                 }
 
         } catch (Exception e) {

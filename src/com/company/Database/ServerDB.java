@@ -29,8 +29,7 @@ public class ServerDB {
         connection = connectionDB.getConnection();
 
         try {
-            String table = "CREATE TYPE VIEW AS ENUM ('BAD', 'TERRIBLE', 'PARK', 'STREET');" +
-                    "CREATE TABLE IF NOT EXISTS collection(id SERIAL PRIMARY KEY, " +
+            String table = "CREATE TABLE IF NOT EXISTS collection(id SERIAL PRIMARY KEY, " +
                     "Name VARCHAR(200), " +
                     "CoordinateX INTEGER," +
                     "CoordinateY INTEGER," +

@@ -38,36 +38,32 @@ public class ServerAccepter {
 
                 while (it.hasNext()) {
                     SelectionKey selKey = (SelectionKey) it.next();
-
+                    //if (ssChannel1.isOpen())
 //            it.remove();
-                    if (selKey.isAcceptable()) {
-                        ServerSocketChannel ssChannel = (ServerSocketChannel) selKey.channel();
-                        SocketChannel sChannel = ssChannel.accept();
+                    ServerSocketChannel ssChannel = (ServerSocketChannel) selKey.channel();
+                    SocketChannel sChannel = ssChannel1.accept();
 
+                    ByteBuffer bufferRaed = ByteBuffer.allocate(30000);
+                    sChannel.read(bufferRaed);
+                    System.out.println(bufferRaed);
+                    bufferRaed.flip();
 
-                        ByteBuffer bufferRaed = ByteBuffer.allocate(30000);
-                        sChannel.read(bufferRaed);
-                        System.out.println(bufferRaed);
-                        bufferRaed.flip();
-
-                        PasswordCheckDB passwordCheck = new PasswordCheckDB(bufferRaed, passwordMap);
-                        String result = passwordCheck.passwordCheck();
-                        if (result.equals("Entered") || result.equals("Incorrect password")) {
-                            ByteBuffer bufferWrite;
-                            //String OK = "Entered";
-                            byte[] bs = result.getBytes(StandardCharsets.UTF_8);
-                            bufferWrite = ByteBuffer.wrap(bs);
-                            sChannel.write(bufferWrite);
-                        } else if (result.equals("wasEntered")) {
-                            ByteBuffer bufferWrite;
-                            bufferWrite = handlerRequest.handelr(st, bufferRaed, f);
-                            sChannel.write(bufferWrite);
-                        }
-//                    sChannel.close();
+                    PasswordCheckDB passwordCheck = new PasswordCheckDB(bufferRaed, passwordMap);
+                    String result = passwordCheck.passwordCheck();
+                    if (result.equals("Entered") || result.equals("Incorrect password")) {
+                        ByteBuffer bufferWrite;
+                        //String OK = "Entered";
+                        byte[] bs = result.getBytes(StandardCharsets.UTF_8);
+                        bufferWrite = ByteBuffer.wrap(bs);
+                        sChannel.write(bufferWrite);
+                    } else if (result.equals("wasEntered")) {
+                        ByteBuffer bufferWrite;
+                        bufferWrite = handlerRequest.handelr(st, bufferRaed, f);
+                        sChannel.write(bufferWrite);
                     }
+//                    sChannel.close();
                 }
             } catch (IOException e) {
-
             }
         }
     }

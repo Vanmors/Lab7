@@ -27,9 +27,11 @@ public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException, NoSuchAlgorithmException {
         Map<String, String> passwordMap = new HashMap<>();
         ServerDB serverDB = new ServerDB();
+        Stack<Flat> st = new Stack<>();
+        serverDB.createTableServer();
         ParseDB parseDB = new ParseDB();
+        parseDB.parse(st);
 
-        //serverDB.createTableServer();
         //serverDB.insertIntoTableServer();
         //parseDB.parse();
 
@@ -39,7 +41,7 @@ public class Main {
                     !args[0].equals("/dev/random") &&
                     !args[0].equals("/dev/zero")) {
 
-                Stack<Flat> st = new Stack<>();
+
                 ServerAccepter.ServerConnect(args[0], st, passwordMap);
                 break;
             } else {
