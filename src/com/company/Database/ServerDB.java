@@ -10,8 +10,8 @@ public class ServerDB {
         try {
             Class.forName("org.postgresql.Driver");
             c = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5432/postgres",
-                            "postgres", "nav461");
+                    .getConnection("jdbc:postgresql://pg:5432/studs",
+                            "s333887", "nav461");
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println(e.getClass().getName() + ": " + e.getMessage());

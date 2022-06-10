@@ -23,11 +23,9 @@ import java.util.Random;
 
 public class PasswordCheckDB {
     private ByteBuffer buffer;
-    private Map<String, String> passwordMap;
 
-    public PasswordCheckDB(ByteBuffer buffer, Map<String, String> passwordMap) {
+    public PasswordCheckDB(ByteBuffer buffer) {
         this.buffer = buffer;
-        this.passwordMap = passwordMap;
     }
 
     public String sault() {

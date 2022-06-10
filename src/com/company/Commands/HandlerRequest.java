@@ -15,7 +15,7 @@ import java.util.Stack;
 public class HandlerRequest {
     private int count = 0;
     private String command;
-    public ByteBuffer handelr(Stack<Flat> st, ByteBuffer bufferRead, String f) throws IOException, ClassNotFoundException {
+    public ByteBuffer handelr(Stack<Flat> st, ByteBuffer bufferRead) throws IOException, ClassNotFoundException {
         try {
 
             ICommand request = (ICommand) new ObjectInputStream(new ByteArrayInputStream(bufferRead.array())).readObject();

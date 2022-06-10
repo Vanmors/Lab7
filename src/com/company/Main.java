@@ -36,18 +36,9 @@ public class Main {
         //parseDB.parse();
 
         while(true) {
-            if (args.length == 1 &&
-                    !args[0].equals("/dev/null") &&
-                    !args[0].equals("/dev/random") &&
-                    !args[0].equals("/dev/zero")) {
-
-
-                ServerAccepter.ServerConnect(args[0], st, passwordMap);
-                break;
-            } else {
-                System.out.println("Введено больше одного файла или не введено вообще");
+            //args[0] = "asdfghjkl";
+                ServerAccepter.ServerConnect(st, passwordMap);
                 break;
             }
         }
     }
-}
