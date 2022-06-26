@@ -19,6 +19,7 @@ import java.util.concurrent.Executors;
 //    public FThread(SelectionKey selKey, ServerSocketChannel ssChannel1, Stack<Flat> st){
 //        this.selKey = selKey;
 //        this.ssChannel1 = ssChannel1;
+//        this.st = st;
 //    }
 //    @Override
 //    public void run() {
@@ -33,7 +34,7 @@ import java.util.concurrent.Executors;
 //        ByteBuffer bufferRaed = ByteBuffer.allocate(30000);
 //        try {
 //            //assert sChannel != null;
-//            assert sChannel != null;
+////            assert sChannel != null;
 //            sChannel.read(bufferRaed);
 //        } catch (IOException e) {
 //            e.printStackTrace();

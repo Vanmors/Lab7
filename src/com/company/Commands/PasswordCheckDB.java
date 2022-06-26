@@ -64,7 +64,6 @@ public class PasswordCheckDB {
                 stringBuilder.append(String.format("%02X", b));
             }
             sPassword = stringBuilder.toString().toLowerCase();
-            System.out.println(sPassword);
 
             Connection connection = null;
             Statement statement = null;
@@ -80,7 +79,6 @@ public class PasswordCheckDB {
                 rs = statement.executeQuery(table);
 
                 while (rs.next()) {
-                    System.out.println(rs.getString(1));
                     if (rs.getString(1).equals(n[1])) {
                         //System.out.println(hashedPassword);
                         if (Objects.equals(rs.getString(2), rs.getString(3) + sPassword + pepper)) {

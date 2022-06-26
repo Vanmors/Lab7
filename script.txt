@@ -1,2 +1,15 @@
 help
 show
+add
+ewf
+3
+3
+3
+4
+true
+6
+BAD
+7
+66
+7
+show

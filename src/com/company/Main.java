@@ -9,6 +9,7 @@ import com.company.data.Flat;
 import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -25,7 +26,6 @@ public class Main {
      * @throws IOException исключение
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException, NoSuchAlgorithmException {
-        Map<String, String> passwordMap = new HashMap<>();
         ServerDB serverDB = new ServerDB();
         Stack<Flat> st = new Stack<>();
         serverDB.createTableServer();
@@ -37,7 +37,8 @@ public class Main {
 
         while(true) {
             //args[0] = "asdfghjkl";
-                ServerAccepter.ServerConnect(st, passwordMap);
+            new Thread(new ServerAccepter(st)).start();
+                //ServerAccepter.ServerConnect(st);
                 break;
             }
         }

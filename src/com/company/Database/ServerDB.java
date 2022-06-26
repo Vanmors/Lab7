@@ -17,7 +17,7 @@ public class ServerDB {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
-        System.out.println("Opened database successfully");
+
         return c;
     }
 
@@ -29,7 +29,7 @@ public class ServerDB {
         connection = connectionDB.getConnection();
 
         try {
-            String table = "CREATE TABLE IF NOT EXISTS collection(id SERIAL PRIMARY KEY, " +
+            String table = "CREATE TABLE IF NOT EXISTS collection(id serial, " +
                     "Name VARCHAR(200), " +
                     "CoordinateX INTEGER," +
                     "CoordinateY INTEGER," +
@@ -45,7 +45,6 @@ public class ServerDB {
                     "UserS VARCHAR(200) NOT NULL)";
             statement = connection.createStatement();
             statement.executeUpdate(table);
-            System.out.println("finished");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,7 +74,6 @@ public class ServerDB {
             statement.executeUpdate(firstFlat);
             statement.executeUpdate(secondFlat);
             statement.executeUpdate(thirdFlat);
-            System.out.println("Value inserted successfully");
         } catch (Exception e) {
             e.printStackTrace();
         }

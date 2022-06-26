@@ -31,7 +31,6 @@ public class PasswordDB {
                             "Salt VARCHAR(200))";
             statement = connection.createStatement();
             statement.executeUpdate(table);
-            System.out.println("finishedBD");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,7 +48,6 @@ public class PasswordDB {
                     "(" + "\'" + login + "\'" + " , " + "\'" + password + "\'" + " , " + "\'" + salt + "\'" + ")";
             statement = connection.createStatement();
             statement.executeUpdate(thirdFlat);
-            System.out.println("Value inserted successfully");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,7 +65,6 @@ public class PasswordDB {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
-        System.out.println("Opened database successfully");
         return c;
     }
 }
